@@ -8,7 +8,7 @@ if defined _OLD_CODEPAGE (
     "%SystemRoot%\System32\chcp.com" 65001 > nul
 )
 
-set VIRTUAL_ENV=C:\Users\benal\OneDrive\Archive\Documents\Python\Minecraft Server Scanner\.venv
+set VIRTUAL_ENV=C:\Users\benal\OneDrive\Archive\Documents\Python\Ngrok Minecraft Server Finder\Ngrok-Minecraft-Server-Finder\.venv
 
 if not defined PROMPT set PROMPT=$P$G
 
