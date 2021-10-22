@@ -1,19 +1,21 @@
-import threading
 from mcstatus import MinecraftServer
 from threading import Thread
 from openpyxl import workbook, worksheet
 from openpyxl.reader.excel import load_workbook
 
 def testNgrokPort(sub, port) -> bool:
-    # print(f'Now testing: {sub}, {port}')
+    print(f'Now testing: {sub}, {port}')
     try: 
         server = MinecraftServer.lookup(f"{sub}.tcp.ngrok.io:{port}")
         status = server.status(1)
-        print("New hit on Subnet {sub}, Port {port}")
+        print("Hit")
         wb = load_workbook(f'Subnets/{sub}.xlsx')
         ws = wb.active
         ws.append([sub, port, status.version.name, status.description, status.players.online, status.players.max])
         wb.save(f'Subnets/{sub}.xlsx')
+        hitlist = open('hitlist', 'a')
+        hitlist.write(f"New hit on Subnet {sub}, Port {port}\n")
+        hitlist.close()
     except:
         return False
     return True
